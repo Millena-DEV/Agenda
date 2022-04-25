@@ -60,7 +60,10 @@ session_start(); //Iniciar a sessao
             </div>
         </div> -->
 
-        Documento <input type="text" class="form-input" name="doc" placeholder="email@gmail.com" title="Digite o email." />
+        <div class="form-areas">
+            <label for="documento"> Documento: </label>
+            <input type="text" class="form-input" name="doc" />
+        </div>
 
         <!-- tipo contato -->
         <div class="form-group">
@@ -75,6 +78,7 @@ session_start(); //Iniciar a sessao
             <label> E-mail </label>           
           </p>
         </div>
+        
 
         <!-- <div id="telefone" style="display: none;">
           <div class="form-areas">
@@ -92,8 +96,11 @@ session_start(); //Iniciar a sessao
             </div>
         </div> -->
 
-        Contato <input type="text" class="form-input" name="opContato" placeholder="email@gmail.com" title="Digite o email." />
-
+        
+        <div class="form-areas">
+            <label for="contato"> Contato: </label>
+            <input type="text" class="form-input" name="opContato" />
+        </div>
 
          <!-- endereco -->      
          <div class="form-areas">

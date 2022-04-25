@@ -11,6 +11,8 @@ include_once ("DAO/conexao.php");
 <head>
     <meta charset="utf-8">
     <title> Listar </title>
+    <link rel="stylesheet" href="components/">
+
 </head>
 
 <body>
