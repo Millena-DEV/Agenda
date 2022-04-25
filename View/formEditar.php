@@ -6,94 +6,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Editar contato </title>
 
-    <link rel="stylesheet" href="./styles/form.css">
-    <script src="./scripts/validar.js"></script>
+    <link rel="stylesheet" href="../components/styles/form.css">
 
 </head>
 
 <?php
 
-    include 'conectar.php';
+  include ("../DAO/conexao.php");
 
-    $usuario_id = $_POST['usuario_id'];
-    $idEndereco = $_POST['idEndereco'];
-    $nome = $_POST['nome'];
-    $pessoa = $_POST['pessoa'];
-    $contato = $_POST['contato'];
-    $opcontato = $_POST['opContato'];
-    $cep = $_POST['cep'];
-    $logadouro = $_POST['logadouro'];
-    $rua = $_POST['rua'];
-    $numero = $_POST['numero'];
+  $query_usuarios = "SELECT usuario_id, nome, pessoa, doc, contato, opcontato
+                    FROM clientes
+                    ORDER BY usuario_id ASC";
+    $result_usuarios = $conn->prepare($query_usuarios);
+    $result_usuarios->execute();
 
+  while ($row_usuario = $result_usuarios->fetch(PDO::FETCH_ASSOC)){
+    //var_dump($row_usuario);
+    extract($row_usuario);
+}
 ?>
 
 <table class="table">
 
 <h1> Editar contato</h1> <hr>
 
-<form name="form" class="form" action="Editar.php" method="post">
+<!-- php?usuario_id=".$row_usuario['usuario_id'] -->
+
+<form name="form" class="form" action="../DAO/Editar.php" method="POST">
 
     <input type="hidden" name="usuario_id" value="<?php echo $usuario_id; ?>">
 
     <div class="form-areas">
       <label for="nome"> Nome: </label>
-      <input type="text" name="nome" value="<?php echo $nome?>">
+      <input type="text" name="nome" value="<?php echo $nome; ?>">
     </div>
 
     </div class="form-areas">
             <p class="input-radio">          
-              <input type="radio" name="pessoa" value=<?php echo $pessoa?> onclick="Pessoa(this.value); ">
+              <input type="radio" name="pessoa" value= "<?php echo $pessoa; ?> onclick="Pessoa(this.value); ">
               <label> Pessoa Fisica </label>
               
-              <input type="radio" name="pessoa" value="<?php echo $pessoa?>" onclick="Pessoa(this.value);">
+              <input type="radio" name="pessoa" value="<?php echo $pessoa; ?>" onclick="Pessoa(this.value);">
               <label> Pessoa Juridica </label>           
             </p>
         </div>
         <div class="form-areas">
             <label for="documento"> Documento: </label>
-            <input type="text" class="form-input" name="doc" />
+            <input type="text" class="form-input" name="doc" value="<?php echo $doc; ?>"/>
         </div>
   
     </div class="form-areas">
           <p class="input-radio">          
-            <input type="radio" name="contato" value="<?php echo $contato?>" onclick="Contato(this.value); ">
+            <input type="radio" name="contato" value="<?php echo $contato; ?>" onclick="Contato(this.value); ">
             <label> Telefone </label>
             
-            <input type="radio" name="contato" value="<?php echo $contato?>" onclick="Contato(this.value);">
+            <input type="radio" name="contato" value="<?php echo $contato; ?>" onclick="Contato(this.value);">
             <label> E-mail </label>           
           </p>
         </div>
         <div class="form-areas">
             <label for="contato"> Contato: </label>
-            <input type="text" class="form-input" name="opContato" />
+            <input type="text" class="form-input" name="opContato" value="<?php echo $opcontato; ?>" />
         </div>
 
     
 <h1> Editar Endereço </h1> <hr>
 
-<form name="form" class="form" action="Editar.php" method="post">
-
     <input type="hidden" name="idEndereco" value="<?php echo $idEndereco; ?>">
 
     <div class="form-areas">
       <label for="cep"> Cep: </label>
-     <input type="text" name="cep" value="<?php echo $cep ?>">
+     <input type="text" name="cep" value="<?php echo $cep; ?>">
     </div>
 
     <div class="form-areas">
       <label for="logadouro"> Logadouro: </label>
-     <input type="text" name="logadouro" value="<?php echo $logadouro ?>">
+     <input type="text" name="logadouro" value="<?php echo $logadouro; ?>">
     </div>
 
     <div class="form-areas">
       <label for="rua"> Rua: </label>
-     <input type="text" name="rua" value="<?php echo $rua ?>">
+     <input type="text" name="rua" value="<?php echo $rua; ?>">
     </div>
 
     <div class="form-areas">
       <label for="numero"> Número: </label>
-     <input type="text" name="numero" value="<?php echo $numero ?>">
+     <input type="text" name="numero" value="<?php echo $numero; ?>">
     </div>
 
    

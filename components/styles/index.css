@@ -4,10 +4,14 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+h1 {
+    text-align: center;
+}
+
 .new {
     background-color: #001427;
     font-size:15px;
-    width:100px;
+    width: 160px;
     height:35px;
     border-width:1px;
     color:#fff;
@@ -17,8 +21,13 @@
 
     animation: button_new 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.1s both;
 }
+
 .new:hover {
     background-color: #003249;
+}
+
+.new-a {
+    color: #fff;
 }
 
 @keyframes button_new {

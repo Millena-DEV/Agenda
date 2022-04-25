@@ -11,18 +11,17 @@ include_once ("DAO/conexao.php");
 <head>
     <meta charset="utf-8">
     <title> Listar </title>
-    <link rel="stylesheet" href="components/">
+   
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="components/styles/index.css">
+
 
 </head>
 
 <body>
-    <a href="index.php">Listar</a><br>
-    <a href="View/formCadastro.php"> Novo Contato </a>
+     <a class="new-a" href="View/formCadastro.php"> <button class="new"> Novo Contato </button> </a>
 
-    <h1>Listar Usuários</h1>   
-
-    <div class='container'>
-        
+    <div class='container'>        
         <table id="tabela">
             <thead>
                 <tr>
@@ -33,8 +32,8 @@ include_once ("DAO/conexao.php");
                     <th>Tipo de Contato</th>
                     <th>Contato</th>
                     <th>Endereço</th>
-                    <th>Excluir</th>
                     <th>Editar</th>
+                    <th>Excluir</th>                    
                 </tr>
             </thead>
             <tbody> 
@@ -58,17 +57,15 @@ include_once ("DAO/conexao.php");
         echo "<td> $usuario_id </td>";
         echo "<td> $nome </td>";
         echo "<td> $pessoa </td> ";
-        echo " <td> $doc </td> ";
-        echo " <td> $contato </td> ";
+        echo "<td> $doc </td> ";
+        echo "<td> $contato </td> ";
         echo "<td> $opcontato </td> ";
-        echo "  <td> Detalhes </td> ";
-        echo " <td> <a href='View/formEditar.php?usuario_id=".$row_usuario['usuario_id'] ."'> Editar </a> </td>";
-        echo " <td> <a href='View/modalExcluir.php?usuario_id=".$row_usuario['usuario_id'] ."'> Excluir </a> </td>";
+        echo "<td> <a href='View/Detalhes.php?usuario_id=".$row_usuario['usuario_id'] ."'> <i class='bx bxs-user-detail bx-sm'></i> </a> </td> </td> ";
+        echo "<td> <a href='View/formEditar.php?usuario_id=".$row_usuario['usuario_id'] ."'> <i class='bx bxs-edit bx-sm'></i> </a> </td>";
+        echo "<td> <a href='View/modalExcluir.php?usuario_id=".$row_usuario['usuario_id'] ."'> <i class='bx bxs-trash bx-sm'></i> </a> </td>";
         echo "<tr>";
     }
     ?>
-
-
 
 </tr>
 </body>

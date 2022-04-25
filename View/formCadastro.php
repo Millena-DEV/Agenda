@@ -30,7 +30,6 @@ session_start(); //Iniciar a sessao
         </div>
 
         <!-- tipo pessoa -->
-        <div class="form-group">
         <div class="form-areas">
           <p class="p-title"> Qual o tipo de cliente? </p>
         </div>
@@ -41,7 +40,7 @@ session_start(); //Iniciar a sessao
               <input type="radio" name="pessoa" value="juridica" onclick="Pessoa(this.value);">
               <label> Pessoa Juridica </label>           
             </p>
-        </div>
+        
      
         <!-- <div id="fisica" style="display: none;">
                           
@@ -66,7 +65,7 @@ session_start(); //Iniciar a sessao
         </div>
 
         <!-- tipo contato -->
-        <div class="form-group">
+        
         <div class="form-areas">
           <p class="p-title"> Qual o tipo de contato? </p>
         </div>
@@ -95,7 +94,6 @@ session_start(); //Iniciar a sessao
               placeholder="email@gmail.com" title="Digite o email." />
             </div>
         </div> -->
-
         
         <div class="form-areas">
             <label for="contato"> Contato: </label>
@@ -103,7 +101,7 @@ session_start(); //Iniciar a sessao
         </div>
 
          <!-- endereco -->      
-         <div class="form-areas">
+        <div class="form-areas">
           <label for="cep"> CEP: </label>
           <input name="cep" type="text" id="cep" class="mascCEP" value="" size="10" maxlength="9"
            onblur="pesquisacep(this.value);" /></label><br />
@@ -122,21 +120,6 @@ session_start(); //Iniciar a sessao
         <div class="form-areas">
           <label for="rua"> Rua: </label>
           <input name="rua" type="text" id="rua" size="60" /></label><br />
-        </div>
-
-        <div class="form-areas">
-          <label for="bairro"> Bairro: </label>
-          <input name="bairro" type="text" id="bairro" size="40" /></label><br />
-        </div>
-
-        <div class="form-areas">
-          <label for="cidade"> Cidade: </label>
-          <input name="cidade" type="text" id="cidade" size="40" /></label><br />
-        </div>
-
-        <div class="form-areas">
-          <label for="uf"> Estado: </label>
-          <input name="uf" type="text" id="uf" size="2" /></label><br />
         </div>
 
         <input type="submit" class="button_form" value="Cadastrar" name="CadUsuario">
