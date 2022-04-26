@@ -9,8 +9,8 @@ $usuario_id = $_GET['usuario_id'];
 $idendereco= $_GET['idendereco'];
 
 $usuario_id = "DELETE from clientes
-where usuario_id = '$usuario_id'";
+where usuario_id = ".$usuario_id;
 
 $idEndereco = "DELETE from enderecos
-where idendereco = '$idEndereco'";
+where idendereco = ".$idEndereco;
 

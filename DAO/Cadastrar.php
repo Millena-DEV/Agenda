@@ -10,9 +10,10 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 if(!empty($dados['CadUsuario'])){
     $query_usuario = "INSERT INTO clientes 
-                (nome, pessoa, doc, contato, opContato) VALUES
-                (:nome, :pessoa, :doc, :contato, :opContato)";
+                (usuario_id,nome, pessoa, doc, contato, opContato) VALUES
+                (:usuario_id,:nome, :pessoa, :doc, :contato, :opContato)";
     $cad_usuario = $conn->prepare($query_usuario);
+    $cad_usuario->bindParam(':usuario_id', $dados['usuario_id']);
     $cad_usuario->bindParam(':nome', $dados['nome'], PDO::PARAM_STR);
     $cad_usuario->bindParam(':pessoa', $dados['pessoa'], PDO::PARAM_STR);   
     $cad_usuario->bindParam(':doc', $dados['doc'], PDO::PARAM_STR);
@@ -21,9 +22,10 @@ if(!empty($dados['CadUsuario'])){
     $cad_usuario->execute();
     
     $query_endereco= "INSERT INTO enderecos 
-                (cep, logradouro, rua, numero) VALUES 
-                (:cep, :logradouro, :rua, :numero)";
+                (idendereco,cep, logradouro, rua, numero) VALUES 
+                (:idendereco, :cep, :logradouro, :rua, :numero)";
     $cad_endereco = $conn->prepare($query_endereco);   
+    $cad_endereco->bindParam(':idendereco', $dados['idendereco']); 
     $cad_endereco->bindParam(':cep', $dados['cep'], PDO::PARAM_STR); 
     $cad_endereco->bindParam(':logradouro', $dados['logradouro'], PDO::PARAM_STR);
     $cad_endereco->bindParam(':rua', $dados['rua'], PDO::PARAM_STR);
