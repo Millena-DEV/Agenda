@@ -4,13 +4,13 @@ include ("conexao.php");
 
 $dados = filter_input_array(INPUT_GET, FILTER_DEFAULT);
 
+$usuario_id = $dados['usuario_id'];
+$idendereco = $dados['usuario_id'];
 
-$usuario_id = $_GET['usuario_id'];
-$idendereco= $_GET['idendereco'];
+$queryDeletaUsuario = "DELETE FROM clientes WHERE usuario_id = :usuario_id";
 
-$usuario_id = "DELETE from clientes
-where usuario_id = ".$usuario_id;
+$queryDeletaEnderecos = "DELETE FROM enderecos WHERE idendereco = :idendereco";
 
-$idEndereco = "DELETE from enderecos
-where idendereco = ".$idEndereco;
-
+$deletaUsuario = $conn->prepare($queryDeletaUsuario); 
+$deletaUsuario->bindParam(':usuario_id', $usuario_id); 
+$deletaUsuario->execute();

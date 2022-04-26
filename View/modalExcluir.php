@@ -11,7 +11,8 @@
 </head>
 
 <body>
-    <div class="content flex">
+    <div class="content flex">  
+     
         <div class="modal">
             <a href="../index.php" class="modal__cross">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,7 +32,10 @@
             </p>
             <div class="modal__btns flex">
                 <a href="../index.php" class="modal__cta"> Cancelar </a>
-                <a href="../DAO/Excluir.php" class="modal__cta modal__cta--red"> Excluir </a>
+                <?php 
+                    $url = "../DAO/Excluir.php?usuario_id=".$_GET['usuario_id'];
+                    echo '<a href="'.$url.'" class="modal__cta modal__cta--red"> Excluir </a>';
+                ?>  
             </div>
         </div>
     </div>
