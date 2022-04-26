@@ -57,4 +57,5 @@ CREATE TABLE enderecos (
 	logradouro VARCHAR(20),
 	rua VARCHAR(20),
 	numero VARCHAR(20)
+    TESTE
 );*/

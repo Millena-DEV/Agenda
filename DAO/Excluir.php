@@ -16,3 +16,4 @@ $deletaUsuario->bindParam(':usuario_id', $usuario_id);
 $deletaUsuario->execute();
 
 header("Location: ../index.php");
+/* TESTE */

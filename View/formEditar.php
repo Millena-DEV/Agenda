@@ -15,30 +15,32 @@
 
   include("../DAO/conexao.php");
 
-$query_usuarios = "SELECT usuario_id, nome, pessoa, doc, contato, opcontato
-                    FROM  clientes
-                    WHERE usuario_id = :usuario_id
-                    ORDER BY usuario_id ASC";
-$result_usuarios = $conn->prepare($query_usuarios);
-$result_usuarios->execute();
+  $id = $_GET['usuario_id']; 
+
+  $query_usuarios = "SELECT usuario_id, nome, pessoa, doc, contato, opcontato
+                      FROM  clientes
+                      WHERE usuario_id = :usuario_id
+                      ORDER BY usuario_id ASC";
+  $result_usuarios = $conn->prepare($query_usuarios);
+  $result_usuarios->execute();
 
 
-$query_usuarios = "SELECT *FROM  clientes
-                    WHERE usuario_id = $id";
+  $query_usuarios = "SELECT *FROM  clientes
+                      WHERE usuario_id = $id";
 
-$result_usuarios = $conn->prepare($query_usuarios);
-$result_usuarios->execute();
-while ($row_usuario = $result_usuarios->fetch(PDO::FETCH_ASSOC)) {
-  //var_dump($row_usuario);
-  extract($row_usuario);
-  
-  $query_endereco = "SELECT * FROM enderecos WHERE idendereco = $id";
-  $result_enderecos = $conn->prepare($query_endereco);
-  $result_enderecos->execute();
-  while ($row_endereco = $result_enderecos->fetch(PDO::FETCH_ASSOC)) {
+  $result_usuarios = $conn->prepare($query_usuarios);
+  $result_usuarios->execute();
+  while ($row_usuario = $result_usuarios->fetch(PDO::FETCH_ASSOC)) {
     //var_dump($row_usuario);
-    extract($row_endereco);
-  }
+    extract($row_usuario);
+    
+    $query_endereco = "SELECT * FROM enderecos WHERE idendereco = $id";
+    $result_enderecos = $conn->prepare($query_endereco);
+    $result_enderecos->execute();
+    while ($row_endereco = $result_enderecos->fetch(PDO::FETCH_ASSOC)) {
+      //var_dump($row_usuario);
+      extract($row_endereco);
+    }
 }
 
 
@@ -49,12 +51,7 @@ while ($row_usuario = $result_usuarios->fetch(PDO::FETCH_ASSOC)) {
   <h1> Editar contato</h1>
   <hr>
 
-
-
-
   <form name="form" class="form" action="../DAO/Editar.php" method="POST">
-
-
 
     <input type="hidden" name="usuario_id" value="<?php echo $id; ?>">
 
@@ -63,29 +60,11 @@ while ($row_usuario = $result_usuarios->fetch(PDO::FETCH_ASSOC)) {
       <input type="text" name="nome" value="<?php echo $nome; ?>">
     </div>
 
-    </div class="form-areas">
-    <p class="input-radio">
-      <input type="radio" name="pessoa" value="<?php echo $pessoa; ?>">
-              <label> Pessoa Fisica </label>
-              
-              <input type=" radio" name="pessoa" value="<?php echo $pessoa; ?>">
-      <label> Pessoa Juridica </label>
-    </p>
-    </div>
     <div class="form-areas">
       <label for="documento"> Documento: </label>
       <input type="text" class="form-input" name="doc" value="<?php echo $doc; ?>" />
     </div>
 
-    </div class="form-areas">
-    <p class="input-radio">
-      <input type="radio" name="contato" value="<?php echo $contato; ?> ">
-      <label> Telefone </label>
-
-      <input type="radio" name="contato" value="<?php echo $contato; ?>">
-      <label> E-mail </label>
-    </p>
-    </div>
     <div class="form-areas">
       <label for="contato"> Contato: </label>
       <input type="text" class="form-input" name="opContato" value="<?php echo $opcontato; ?>" />
@@ -102,7 +81,7 @@ while ($row_usuario = $result_usuarios->fetch(PDO::FETCH_ASSOC)) {
     </div>
 
     <div class="form-areas">
-      <label for="logadouro"> Logadouro: </label>
+      <label for="logradouro"> Logradouro: </label>
       <input type="text" name="logradouro" value="<?php echo $logradouro; ?>">
     </div>
 
@@ -125,3 +104,5 @@ while ($row_usuario = $result_usuarios->fetch(PDO::FETCH_ASSOC)) {
   </form>
 
 </table>
+
+<!-- TESTE -->

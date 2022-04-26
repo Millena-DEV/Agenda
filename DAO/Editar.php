@@ -24,3 +24,4 @@ WHERE idEndereco = :idendereco";
 $queryUpdateEnderecos = $conn->prepare($queryUpdateEnderecos); 
 $queryUpdateEnderecos->bindParam(':usuario_id', $usuario_id); 
 $queryUpdateEnderecos->execute();*/
+/* TESTE */

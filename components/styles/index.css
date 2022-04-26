@@ -78,3 +78,18 @@ a {
 .space {
     margin: 30px;
 }
+
+.voltar {
+    background-color: #001427;
+    font-size:15px;
+    width: 160px;
+    height:35px;
+    border-width:1px;
+    color:#fff;
+    font-weight:bold;
+    margin: 20px 0 15px 40px;
+
+    animation: button_new 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.1s both;
+}
+
+/* TESTE */

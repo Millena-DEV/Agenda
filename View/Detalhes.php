@@ -20,7 +20,7 @@ include_once ("../DAO/conexao.php");
 <body>
 
     <div class='container'>        
-        <table id="tabela">
+        <table style="margin:30px;" id="tabela">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -41,15 +41,14 @@ include_once ("../DAO/conexao.php");
 
     $id = $_GET['usuario_id'];      
 
-    $query_enderecos = "SELECT cep, logradouro, rua, numero
-                    FROM enderecos
-                    WHERE $id";
-    $result_enderecos = $conn->prepare($query_enderecos);
+    $query_endereco = "SELECT * FROM enderecos WHERE idendereco = $id";
+    $result_enderecos = $conn->prepare($query_endereco);
     $result_enderecos->execute();
-
+    
     while ($row_enderecos = $result_enderecos->fetch(PDO::FETCH_ASSOC)){
         //var_dump($row_endereco);
         extract($row_enderecos);
+        echo "<h1 style='margin: 15px;'> Endereço do contato: $id </h1>";
         echo "<td> $idendereco </td>";
         echo "<td> $cep </td>";
         echo "<td> $logradouro </td> ";
@@ -59,7 +58,12 @@ include_once ("../DAO/conexao.php");
     }
     ?>
 
-</tr>
+        </tr>
+        </table>
+
+        <a href="../index.php"> <button class="voltar"> Voltar </button> </a>
 </body>
 
 </html>
+
+<!-- TESTE -->
