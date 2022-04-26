@@ -1,6 +1,7 @@
 <?php
-session_start(); //Iniciar a sessao
+  session_start(); //Iniciar a sessao
 ?>
+
 <!DOCTYPE HTML>
 <html lang="pt-br">
 
@@ -12,6 +13,8 @@ session_start(); //Iniciar a sessao
     <script src="../components/scripts/valida_cpf_cnpj.js"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="../components/scripts/mascara_doc.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 </head>
 
 <body>
@@ -71,7 +74,7 @@ session_start(); //Iniciar a sessao
          <!-- endereco -->      
         <div class="form-areas">
           <label for="cep"> CEP: </label>
-          <input name="cep" type="text" id="cep" class="mascCEP" value="" onkeypress="mascara(this, '#####-###')" /></label><br />
+          <input name="cep" type="text" id="cep" class="mascCEP" value="" onkeypress="$(this).mask('00.000-000')" /></label><br />
         </div>
         
         <div class="form-areas">

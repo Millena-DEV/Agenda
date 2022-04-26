@@ -13,17 +13,29 @@
 
 <?php
 
-include("../DAO/conexao.php");
+  include("../DAO/conexao.php");
 
-$query_usuarios = "SELECT usuario_id, nome, pessoa, doc, contato, opcontato
-                    FROM clientes
-                    ORDER BY usuario_id ASC";
-$result_usuarios = $conn->prepare($query_usuarios);
-$result_usuarios->execute();
+  $query_usuarios = "SELECT usuario_id, nome, pessoa, doc, contato, opcontato
+                      FROM clientes
+                      ORDER BY usuario_id ASC";
+  $result_usuarios = $conn->prepare($query_usuarios);
+  $result_usuarios->execute();
 
-while ($row_usuario = $result_usuarios->fetch(PDO::FETCH_ASSOC)) {
-  //var_dump($row_usuario);
-  extract($row_usuario);
+  while ($row_usuario = $result_usuarios->fetch(PDO::FETCH_ASSOC)) {
+    //var_dump($row_usuario);
+    extract($row_usuario);
+
+  $query_endereco = "SELECT idendereco, cep, logadouro, numero, rua
+    FROM enderecos
+    ORDER BY idendereco ASC";
+    $result_enderecos = $conn->prepare($query_endereco);
+    $result_enderecos->execute();
+
+    while ($row_endereco = $result_enderecos->fetch(PDO::FETCH_ASSOC)){
+    //var_dump($row_usuario);
+    extract($row_endereco);
+    }
+  
 }
 
 ?>
@@ -72,20 +84,6 @@ while ($row_usuario = $result_usuarios->fetch(PDO::FETCH_ASSOC)) {
       <input type="text" class="form-input" name="opContato" value="<?php echo $opcontato; ?>" />
     </div>
 
-    <?php
-
-    $query_endereco = "SELECT idendereco, cep, logadouro, numero, rua
-    FROM enderecos
-    ORDER BY idendereco ASC";
-    $result_enderecos = $conn->prepare($query_endereco);
-    $result_enderecos->execute();
-
-    while ($row_endereco = $result_enderecos->fetch(PDO::FETCH_ASSOC)){
-    //var_dump($row_usuario);
-    extract($row_endereco);
-    }
-    ?>
-
     <h1> Editar Endereço </h1>
     <hr>
 
@@ -110,9 +108,6 @@ while ($row_usuario = $result_usuarios->fetch(PDO::FETCH_ASSOC)) {
       <label for="numero"> Número: </label>
       <input type="text" name="numero" value="<?php echo $numero; ?>">
     </div>
-
-
-
 
     <button class="button_form" type="submit" onclick="return validar()"> Editar </button></a> <br> <br>
 
