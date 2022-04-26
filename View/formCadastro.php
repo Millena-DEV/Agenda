@@ -8,7 +8,10 @@ session_start(); //Iniciar a sessao
     <meta charset="utf-8">
     <title> Cadastro de contatos </title>
     <link rel="stylesheet" href="../components/styles/form.css">
-    <link rel="stylesheet" href="../components/scripts/validar.js">
+    
+    <script src="../components/scripts/valida_cpf_cnpj.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="../components/scripts/mascara_doc.js"></script>
 </head>
 
 <body>
@@ -41,27 +44,9 @@ session_start(); //Iniciar a sessao
               <label> Pessoa Juridica </label>           
             </p>
         
-     
-        <!-- <div id="fisica" style="display: none;">
-                          
-          <div class="form-areas">
-            <label for="cpf"> CPF: </label>
-            <input type="text" maxlength="14" id="cpf" name="doc" >
-            <span id="resposta"> </span><br><br>
-          </div>
-        </div>
-
-        <div id="juridica" style="display: none;">                  
-        
-            <div class="form-areas">
-              <label for="cnpj"> CNPJ: </label>
-              <input type="text" class="form-input" maxlength="18" id="cnpj" name="doc" onblur="if(!validarCNPJ(this.value)){alert('CNPJ é inválido'); this.value='';}">
-            </div>
-        </div> -->
-
         <div class="form-areas">
             <label for="documento"> Documento: </label>
-            <input type="text" class="form-input" name="doc" />
+            <input type="text" class="cpf_cnpj" name="doc" >
         </div>
 
         <!-- tipo contato -->
@@ -78,23 +63,6 @@ session_start(); //Iniciar a sessao
           </p>
         </div>
         
-
-        <!-- <div id="telefone" style="display: none;">
-          <div class="form-areas">
-            <label for="telefone"> Telefone: </label>
-            <input type="text" class="form-input" maxlength="15" name="opContato" patern="(\(?\d{2}\)?\s)?(\d{4,5}\-\d{4})"
-            placeholder="(xx) xxxxx-xxxx" />
-          </div>
-        </div>
-
-        <div id="email" style="display: none;">                  
-            <div class="form-areas">
-              <label for="email"> E-mail: </label>
-              <input type="text" class="form-input" name="opContato" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
-              placeholder="email@gmail.com" title="Digite o email." />
-            </div>
-        </div> -->
-        
         <div class="form-areas">
             <label for="contato"> Contato: </label>
             <input type="text" class="form-input" name="opContato" />
@@ -103,8 +71,7 @@ session_start(); //Iniciar a sessao
          <!-- endereco -->      
         <div class="form-areas">
           <label for="cep"> CEP: </label>
-          <input name="cep" type="text" id="cep" class="mascCEP" value="" size="10" maxlength="9"
-           onblur="pesquisacep(this.value);" /></label><br />
+          <input name="cep" type="text" id="cep" class="mascCEP" value="" onkeypress="mascara(this, '#####-###')" /></label><br />
         </div>
         
         <div class="form-areas">
@@ -125,8 +92,8 @@ session_start(); //Iniciar a sessao
         <input type="submit" class="button_form" value="Cadastrar" name="CadUsuario">
     </form>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="../components/scripts/validar.js"> </script>
+    <script src="../components/scripts/valida_cpf_cnpj.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
 </body>
 
