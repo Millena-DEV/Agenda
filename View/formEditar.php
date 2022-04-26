@@ -13,8 +13,14 @@
 
 <?php
 
-include("../DAO/conexao.php");
-$id = filter_input(INPUT_GET,'usuario_id',FILTER_SANITIZE_NUMBER_INT);
+  include("../DAO/conexao.php");
+
+$query_usuarios = "SELECT usuario_id, nome, pessoa, doc, contato, opcontato
+                    FROM  clientes
+                    WHERE usuario_id = :usuario_id
+                    ORDER BY usuario_id ASC";
+$result_usuarios = $conn->prepare($query_usuarios);
+$result_usuarios->execute();
 
 
 $query_usuarios = "SELECT *FROM  clientes
@@ -57,8 +63,15 @@ while ($row_usuario = $result_usuarios->fetch(PDO::FETCH_ASSOC)) {
       <input type="text" name="nome" value="<?php echo $nome; ?>">
     </div>
 
-  
-      </div>
+    </div class="form-areas">
+    <p class="input-radio">
+      <input type="radio" name="pessoa" value="<?php echo $pessoa; ?>">
+              <label> Pessoa Fisica </label>
+              
+              <input type=" radio" name="pessoa" value="<?php echo $pessoa; ?>">
+      <label> Pessoa Juridica </label>
+    </p>
+    </div>
     <div class="form-areas">
       <label for="documento"> Documento: </label>
       <input type="text" class="form-input" name="doc" value="<?php echo $doc; ?>" />
@@ -66,10 +79,10 @@ while ($row_usuario = $result_usuarios->fetch(PDO::FETCH_ASSOC)) {
 
     </div class="form-areas">
     <p class="input-radio">
-      <input type="radio" name="contato" value="<?php echo $contato; ?>" onclick="Contato(this.value); ">
+      <input type="radio" name="contato" value="<?php echo $contato; ?> ">
       <label> Telefone </label>
 
-      <input type="radio" name="contato" value="<?php echo $contato; ?>" onclick="Contato(this.value);">
+      <input type="radio" name="contato" value="<?php echo $contato; ?>">
       <label> E-mail </label>
     </p>
     </div>
@@ -103,15 +116,11 @@ while ($row_usuario = $result_usuarios->fetch(PDO::FETCH_ASSOC)) {
       <input type="text" name="numero" value="<?php echo $numero; ?>">
     </div>
 
-
-
-
-    <button class="button_form" type="submit" onclick="return validar()"> <?php
-                                                                          $url = "../DAO/Editar.php?usuario_id=" . $_GET['usuario_id'];
-                                                                          echo '<a href="' . $url . '" class="modal__cta modal__cta--red"> Editar </a>';
-                                                                          ?>
-
-
+    <button class="button_form" type="submit" onclick="return validar()"> 
+    <?php
+         $url = "../DAO/Editar.php?usuario_id=" . $_GET['usuario_id'];
+         echo '<a href="' . $url . '" class="modal__cta modal__cta--red"> Editar </a>';
+    ?>
 
   </form>
 

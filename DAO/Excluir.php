@@ -15,7 +15,4 @@ $deletaUsuario = $conn->prepare($queryDeletaUsuario);
 $deletaUsuario->bindParam(':usuario_id', $usuario_id); 
 $deletaUsuario->execute();
 
-
-$deletaEnderecos = $conn->prepare($queryDeletaEnderecos); 
-$deletaEnderecos->bindParam(':usuario_id', $idendereco); 
-$deletaEnderecos->execute();
+header("Location: ../index.php");
