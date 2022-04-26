@@ -31,12 +31,12 @@ if(!empty($dados['CadUsuario'])){
     $cad_endereco->execute();
 
 
-    $_SESSION['msg'] = "<p style='color: green;'>Usuário cadastrado com sucesso!</p>";
+    $_SESSION['msg'] = "<p style='color: green; margin: 15px;'> Contato cadastrado com sucesso!</p>";
 
     header("Location: ../index.php");
 }else{
     
-    $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuário não cadastrado com sucesso!</p>";
+    $_SESSION['msg'] = "<p style='color: #f00; margin: 15px;'> Erro: Contato não cadastrado com sucesso!</p>";
 
    header("Location: ../index.php");
 }
